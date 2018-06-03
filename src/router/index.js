@@ -1,15 +1,35 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Content from '@/components/content'
+import shoppingCart from '@/components/shoppingCart'
+import Phone from '@/components/Phone'
+import Notebook from '@/components/Notebook'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '/Home',
+      name: 'content',
+      component: Content,
+      children: [
+        {
+          path: '/Home/Phone',
+          name: 'Phone',
+          component: Phone
+        },
+        {
+          path: '/Home/Notebook',
+          name: 'Notebook',
+          component: Notebook
+        }
+      ]
+    },
+    {
+      path: '/shoppingCart',
+      name: 'shoppingCart',
+      component: shoppingCart
     }
   ]
 })
